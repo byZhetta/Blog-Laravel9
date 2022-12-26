@@ -17,9 +17,19 @@ use App\Http\Controllers\CursoController;
 
 Route::get('/', HomeController::class);
 
+// Rutas agrupadas
+// Route::controller(CursoController::class)->group(function() {
+//     Route::get('cursos', 'index')->name('cursos.index');
+//     Route::get('cursos/create', 'create')->name('cursos.create');
+//     Route::get('cursos/{curso}', 'show')->name('cursos.show');
+// });
 
-Route::controller(CursoController::class)->group(function() {
-    Route::get('cursos', 'index');
-    Route::get('cursos/create', 'create');
-    Route::get('cursos/{curso}', 'show');
-});
+// Route::post('cursos', [CursoController::class, 'store'])->name('cursos.store');
+
+// Route::get('cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
+
+// Route::put('cursos/{curso}', [CursoController::class, 'update'])->name('cursos.update');
+
+// Route::delete('cursos/{curso}', [CursoController::class, 'destroy'])->name('cursos.destroy');
+
+Route::resource('cursos', CursoController::class);
